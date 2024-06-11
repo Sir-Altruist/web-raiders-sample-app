@@ -178,6 +178,9 @@ margin: 0 auto;
     `}
 }
 &.bottom-nav {
+    ${Screen.nextHubMax`
+        width: 90%;
+    `}
     ${Screen.surfacePro`
         width: 90%;
     `}
@@ -310,7 +313,7 @@ ${Screen.iPhone14ProMax`
 
 const Button = styled.div`
 width: max-content;
-height: 20px;
+// height: 20px;
 padding: 10px 30px 15px;
 background-color: #0FCC7C;
 color: #fff;
@@ -319,6 +322,7 @@ border-radius: 30px;
 margin-left: 50px;
 margin-top: 10px;
 text-align: center;
+white-space: no-wrap;
 
 &:hover {
 background-color: #00384F;
