@@ -175,8 +175,11 @@ margin: 0 auto;
     `}
 }
 &.bottom-nav {
-    ${Screen.iPhone14ProMax`
+    ${Screen.surfacePro`
         width: 90%;
+    `}
+    ${Screen.samsungGalaxyS8`
+        padding-top: 5px;
     `}
 }
 `;
@@ -195,6 +198,10 @@ background-color: transparent;
 ${Screen.iPhone14ProMax`
     margin-top: 10px; 
 `}
+${Screen.samsungGalaxyS8`
+    height: 50px;
+    margin-top: 5px;
+  `}
 `;
 
 const FlexBox = styled.div`
@@ -223,22 +230,30 @@ const NavList = styled.ul`
 list-style-type: none;
 &.desktop {
     display: flex;
-    ${Screen.iPhone14ProMax`
+    ${Screen.surfacePro`
         display: none;
     `}
 }
 
 &.mobile {
-display: flex;
-flex-direction: column;
-position: absolute;
-width: 90%;
-top: 110px;
-left: 0;
-background-color: #fff;
-border-radius: 10px;
-padding: 10px 25px 0;
 animation: ${({ open }) => open ? decorate.animate.flipOut(.5) : decorate.animate.flipIn(.5)}
+${Screen.surfacePro`
+    width: 80%;
+    left: 50px;  
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 80%;
+    top: 120px;
+    left: 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 25px 0; 
+`}
+${Screen.iPhone14ProMax`
+    width: 88%;
+    left: 0; 
+`}
 }
 `;
 
@@ -276,7 +291,13 @@ const NavListItem = styled.li`
 &.mobile {
 color: #00384F;
 padding-bottom: 20px;
-font-size: 14px;
+
+${Screen.surfacePro`
+    font-size: 18px;
+`}
+${Screen.iPhone14ProMax`
+    font-size: 14px;
+`}
 }
 
 &.active {
@@ -308,7 +329,7 @@ ${Screen.iPhone14ProMax`
 
 const SubMenu = styled.ul`
 display: none;
-${Screen.iPhone14ProMax`
+${Screen.surfacePro`
     display: flex;
     list-style-type: none;
     flex-direction: column;
@@ -358,12 +379,15 @@ ${Screen.iPhone14ProMax`
 
 &.hamburger {
     display: none!important;
-    ${Screen.iPhone14ProMax`
+    ${Screen.surfacePro`
         display: block!important;
-        margin-right: 10px;
-        margin-top: 5px;
+        margin-right: -10px;
+        margin-top: 10px;
         cursor: pointer;
         // animation: hide-scroll .3s backwards;
+    `}
+    ${Screen.iPhone14ProMax`
+        margin-right: 10px;
     `}
 }
 `;

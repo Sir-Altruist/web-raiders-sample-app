@@ -6,12 +6,13 @@ nextHubMax: 1280,
 iPadPro: 1024,
 surfacePro: 912,
 iPadAir: 820,
-iPadMini: 768,
+iPadMini: 770,
 surfaceDuo: 540,
 iPhone14ProMax: 430,
 Pixel7: 412,
-iPhone12Pro: 390,
+iPhone12Pro: 395,
 samsungGalaxyS8: 360,
+iPhone5: 320,
 galaxyFold: 280
 }
 // const sizes = {

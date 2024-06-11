@@ -132,17 +132,25 @@ width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
 
+${Screen.surfacePro`
+    height: 80vh;
+`}
 ${Screen.iPhone14ProMax`
   height: 100vh;
+`}
+${Screen.samsungGalaxyS8`
+  padding-top: 150px;
+  min-height: 100vh;
 `}
 }
 
 &.about {
-  // height: 100vh;
   padding-bottom: 100px;
   margin-top: -100px;
-
-  ${Screen.samsungGalaxyS8`
+  ${Screen.iPhone14ProMax`
+    margin-top: -70px;
+  `}
+  ${Screen.iPhone5`
     margin-top: -50px;
   `}
 }
@@ -152,7 +160,7 @@ const Container = styled.div`
 width: 80%;
 padding: 15px 0;
 margin: 0 auto;
-${Screen.iPhone14ProMax`
+${Screen.surfacePro`
   width: 90%;
 `}
 `;
@@ -164,9 +172,21 @@ margin: 70px auto 10px;
 display: flex;
 flex-direction: column;
 color: #fff;
+// ${Screen.surfacePro`
+//   width: 70%;
+//   margin-top: 10px;
+// `}
+${Screen.surfacePro`
+  width: 100%;
+  margin-top: 40px;
+  // background: #000;
+`}
 ${Screen.iPhone14ProMax`
   width: 100%;
-  margin-top: 10px;
+  // margin-top: 10px;
+`}
+${Screen.samsungGalaxyS8`
+  margin-top: 0;
 `}
 `;
 
@@ -175,9 +195,20 @@ text-transform: uppercase;
 font-size: 16px;
 text-align: center;
 margin: 0;
-
+${Screen.surfacePro`
+  font-size: 13px;
+  margin-top: 20px;
+`}
+${Screen.iPadMini`
+  font-size: 20px;
+  margin-top: 10px;
+`}
 ${Screen.iPhone14ProMax`
   font-size: 13px;
+  margin-top: 0;
+`}
+${Screen.samsungGalaxyS8`
+  margin-top: 30px;
 `}
 
 &.about {
@@ -185,6 +216,9 @@ color: #0FCC7C;
 text-align: left;
 margin-top: 30px;
 font-eize: 14px;
+${Screen.surfacePro`
+  font-size: 13px;
+`}
 }
 `;
 
@@ -194,9 +228,21 @@ padding-top: 0;
 line-height: 1.2em;
 text-align: center;
 margin: 20px 0 0;
-
+${Screen.surfacePro`
+  font-size: 48px;
+  margin-top: 20px;
+`}
+${Screen.iPadMini`
+  font-size: 40px;
+  margin-top: 30px;
+`}
 ${Screen.iPhone14ProMax`
   font-size: 38px;
+  margin-top: 0;
+`}
+${Screen.samsungGalaxyS8`
+  margin-top: 10px;
+  font-size: 30px;
 `}
 
 &.about {
@@ -204,7 +250,10 @@ ${Screen.iPhone14ProMax`
   color: #00384F;
   text-align: left;
   margin-bottom: 20px;
-
+  ${Screen.surfacePro`
+    font-size: 34px;
+    // margin-top: 30px;
+  `}
   ${Screen.iPhone14ProMax`
     font-size: 28px;
   `}
@@ -215,8 +264,14 @@ const Caption = styled.h4`
 font-size: 24px;
 text-align: center;
 margin: 15px 0 0;
+${Screen.surfacePro`
+  margin-top: 30px;
+`}
 ${Screen.iPhone14ProMax`
   font-size: 18px;
+`}
+${Screen.samsungGalaxyS8`
+  font-size: 14px;
 `}
 `;
 
@@ -228,13 +283,19 @@ border: 2px solid ${({ border }) => border};
 margin-left: ${({ left }) => left};
 color: #fff;
 border-radius: 30px;
-cursor: pointer;
+cursor: pointer!important;
 font-weight: 600;
 
 ${Screen.iPhone14ProMax`
   width: 100%;
   margin-left: 0;
   margin-top: 10px;
+`}
+
+${Screen.samsungGalaxyS8`
+  font-size: 14px;
+  white-space: no-wrap;
+  padding: 10px;
 `}
 
 &.learn {
@@ -253,8 +314,12 @@ display: flex;
 justify-content: center;
 align-items: center;
 margin-top: 30px;
+cursor: pointer!important;
 ${Screen.iPhone14ProMax`
   flex-direction: column;
+`}
+${Screen.samsungGalaxyS8`
+  margin-top: 15px;
 `}
 `;
 
@@ -287,9 +352,15 @@ h4 {
   margin-top: 20px;
 }
 
+${Screen.surfacePro`
+width: 500px;
+margin-right: 20px;
+padding-bottom: 50px;  
+`}
 ${Screen.iPhone14ProMax`
   width: 100%;
   height: 200px;
+  padding-bottom: 0;
 
   p {
       font-size: 18px;
@@ -326,6 +397,13 @@ ${Screen.iPhone14ProMax`
   margin-top: 20px;
   padding: 10px;
 
+  
+  ${Screen.surfacePro`
+    width: 97%;
+    margin: 0;
+    padding-bottom: 50px;
+    margin-top: 20px;  
+  `}
   ${Screen.iPhone14ProMax`
     width: 95%;
   `}
@@ -338,6 +416,13 @@ display: flex;
 
 &.about {
 margin-top: 150px;
+
+${Screen.surfacePro`
+  flex-direction: column;
+  width: 100%; 
+  margin-top: 100px;
+  // background-color: #000;
+`}
 ${Screen.iPhone14ProMax`
   width: 100%;
   flex-direction: column;
@@ -350,6 +435,9 @@ ${Screen.iPhone14ProMax`
 const Box = styled.div`
 width: 50%;
 
+${Screen.surfacePro`
+  width: 100%;  
+`}
 ${Screen.iPhone14ProMax`
   width: 100%;  
 `}
@@ -357,13 +445,19 @@ ${Screen.iPhone14ProMax`
 span {
 font-size: 16px;
 color: #00384F; 
+
+${Screen.surfacePro`
+  font-size: 14px;  
+`}
 }
 `;
 
 const Image = styled.img`
 width: 100%;
 border-radius: 10px;
-
+${Screen.surfacePro`
+  margin-top: 50px;  
+`}
 ${Screen.iPhone14ProMax`
   margin-top: 30px;
   height: 300px;
