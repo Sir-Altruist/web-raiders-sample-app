@@ -13,10 +13,9 @@ code {
     monospace;
 }
 
-.carousel .slide {
+/* .carousel .slide {
   opacity: 0;
   transition: opacity 1s ease-in-out;
-  /* pointer-events: none; */
 }
 
 .carousel .slide.selected {
@@ -26,8 +25,7 @@ code {
 .carousel .carousel-slide img {
   max-height: 100%;
   max-width: 100%;
-  object-fit: cover; /* Ensure images are properly fitted */
-}
+  object-fit: cover;
 
 @media (max-width: 768px) {
   .slider-wrapper.axis-horizontal > ul {
@@ -38,4 +36,8 @@ code {
   opacity: 1;
   z-index: auto;
   }
+  } */
+
+  .mySwiper {
+    z-index: -1;
   }

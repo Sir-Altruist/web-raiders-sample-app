@@ -5,14 +5,19 @@ import { Slide1, Slide2, Slide3, Slide4, EnergyImg } from "./assets";
 // import { GoArrowRight } from "react-icons/go";
 import Counter from './counter'
 import { HiOutlineLightBulb } from "react-icons/hi";
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+// import { Carousel } from 'react-responsive-carousel';
+// import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import Screen from "./screens";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Spinner from "./spinner";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+import SwiperCore from 'swiper';
+import { EffectFade } from "swiper/modules";
 
 const sliders = [Slide1, Slide2, Slide3, Slide4]
+SwiperCore.use([EffectFade]);
 function App() {
   const [loading, setLoading] = useState(false)
 
@@ -38,7 +43,48 @@ function App() {
     <AppContainer>
       {/** Landing */}
       <NavigationBar open={open} openMenu={openMenu} handleToggle={handleToggle} />
-      {sliders.length ? <Carousel
+      <Swiper
+      spaceBetween={30}
+      effect={'fade'}
+      // pagination={{
+      //   clickable: true,
+      // }}
+      // navigation={true}
+      className="mySwiper"
+    >
+      {sliders.map((item, i) => (
+        <SwiperSlide>
+
+          <Section key={i} className='landing' background={item}>
+          <Container>
+            <Content>
+              <Header
+              data-aos='fade-up'
+              data-aos-offset='100'
+              >Welcome to webraider</Header>
+              <SubHeader
+              data-aos='fade-down'
+              data-aos-offset='100'
+              >Cleaner Energy For a Cleaner World</SubHeader>
+              <Caption
+              data-aos='fade-down'
+              data-aos-offset='100'
+              >Help protect the environment by powering your home with 100% renewable energy.</Caption>
+              <ButtonWrapper
+              data-aos='fade-up'
+              data-aos-offset='100'
+              >
+                <Button background="#0FCC7C" border="#0FCC7C" className="quick">Get a Quote</Button>
+                <Button background="transparent" border="#fff" left="20px" className="discover">Discover More</Button>
+              </ButtonWrapper>
+            </Content>
+          </Container>
+        </Section>
+        </SwiperSlide>
+
+        ))}
+    </Swiper>
+      {/* <Carousel
       width={'100%'}
       animationHandler='fade'
       infiniteLoop={true}
@@ -52,7 +98,6 @@ function App() {
       >
         {sliders.map((item, i) => (
           <Section key={i} className='landing' background={item}>
-            {/* <NavigationBar /> */}
           <Container>
             <Content>
               <Header
@@ -79,7 +124,7 @@ function App() {
         </Section>
 
         ))}
-      </Carousel> : <></>}
+      </Carousel> */}
 
       {/** About Us */}
       <Section className="about">
@@ -169,6 +214,7 @@ export default App;
 const AppContainer = styled.div`
 width: 100%;
 position: relative;
+overflow: hidden;
 `;
 
 const Section = styled.section`
@@ -177,21 +223,21 @@ width: 100%;
 &.landing {
   padding-top: 200px;
   margin: 0!important;
-  height: 130vh;
+  height: 100vh;
   background-image: ${({ background }) => `linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url(${background})`};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 
 ${Screen.surfacePro`
-    height: 80vh;
+    height: 70vh;
 `}
 ${Screen.iPhone14ProMax`
-  height: 100vh;
+  height: 70vh;
 `}
 ${Screen.samsungGalaxyS8`
   padding-top: 150px;
-  min-height: 100vh;
+  min-height: 70vh;
 `}
 }
 
@@ -340,13 +386,14 @@ font-weight: 600;
 &.quick {
 &:hover {
 background-color: #00384F;
+border: 1px solid #00384F; 
 transition: all .1s ease-out; 
 }
 }
 
 &.discover {
 &:hover {
-border: 1px solid #0FCC7C;
+border: 2px solid #0FCC7C;
 color: #0FCC7C;
 transition: all .1s ease-out; 
 }
@@ -355,7 +402,10 @@ transition: all .1s ease-out;
 ${Screen.iPhone14ProMax`
   width: 100%;
   margin-left: 0;
-  margin-top: 10px;
+  margin-top: 15px 5px;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
 `}
 
 ${Screen.samsungGalaxyS8`
@@ -397,6 +447,7 @@ ${Screen.iPhone14ProMax`
 `;
 
 const Card = styled.div`
+z-index: 90;
 &.count {
 width: 400px;
 height: 300px;
