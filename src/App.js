@@ -418,6 +418,12 @@ ${Screen.samsungGalaxyS8`
   padding: 10px 20px;
   margin-top: 50px;
 
+  &:hover {
+    background-color: #00384F;
+    border: 1px solid #00384F; 
+    transition: all .1s ease-out; 
+  }
+
   ${Screen.iPhone14ProMax`
     width: max-content;
     margin: 30px 0 10px;
