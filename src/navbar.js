@@ -7,7 +7,7 @@ import { IoLogoInstagram, IoMdClose } from "react-icons/io";
 import { Logo } from './assets';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { fadeIn, slideInRight, fadeInDown, bounceInDown, bounceOutUp, flipInY, flipOutY } from 'react-animations';
+import { fadeIn, slideInRight, fadeInDown, bounceInDown, bounceOutUp, flipInY, flipOutY, flip } from 'react-animations';
 import Screen from './screens';
 
 const navlist = [
@@ -56,6 +56,9 @@ const decorate = {
           css`
             animation: ${duration}s ${keyframes(flipOutY)};
           `,
+        flip: (duration) => css`
+            animation: ${duration}s ${keyframes(flip)};
+        `
       }
 }
 const subNav = ['Service', 'Project', 'Page']
@@ -236,7 +239,7 @@ list-style-type: none;
 }
 
 &.mobile {
-animation: ${({ open }) => open ? decorate.animate.flipOut(.5) : decorate.animate.flipIn(.5)}
+animation: ${({ open }) => open ? decorate.animate.flipOut(1) : decorate.animate.flipIn(1)}
 ${Screen.surfacePro`
     width: 80%;
     left: 50px;  

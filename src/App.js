@@ -8,6 +8,8 @@ import { HiOutlineLightBulb } from "react-icons/hi";
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import Screen from "./screens";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const sliders = [Slide1, Slide2, Slide3, Slide4]
 function App() {
@@ -25,6 +27,8 @@ function App() {
   function handleToggle(type, name){
     type === 'menu' ? setOpen(!open) : setOpenMenu(openMenu === name ? null : name)
   }
+  // Disable click function
+  const disableClick = () => {};
   return (
     <AppContainer>
       {/** Landing */}
@@ -37,16 +41,31 @@ function App() {
       showIndicators={false}
       showStatus={false}
       showThumbs={false}
+      onClickItem={disableClick} 
+      onClickThumb={disableClick}
+      
       >
         {sliders.map((item, i) => (
           <Section key={i} className='landing' background={item}>
             {/* <NavigationBar /> */}
           <Container>
             <Content>
-              <Header>Welcome to webraider</Header>
-              <SubHeader>Cleaner Energy For a Cleaner World</SubHeader>
-              <Caption>Help protect the environment by powering your home with 100% renewable energy.</Caption>
-              <ButtonWrapper>
+              <Header
+              data-aos='fade-up'
+              data-aos-offset='100'
+              >Welcome to webraider</Header>
+              <SubHeader
+              data-aos='fade-down'
+              data-aos-offset='100'
+              >Cleaner Energy For a Cleaner World</SubHeader>
+              <Caption
+              data-aos='fade-down'
+              data-aos-offset='100'
+              >Help protect the environment by powering your home with 100% renewable energy.</Caption>
+              <ButtonWrapper
+              data-aos='fade-up'
+              data-aos-offset='100'
+              >
                 <Button background="#0FCC7C" border="#0FCC7C">Get a Quote</Button>
                 <Button background="transparent" border="#fff" left="20px">Discover More</Button>
               </ButtonWrapper>
@@ -61,14 +80,23 @@ function App() {
       <Section className="about">
         <Container>
             <CardContainer>
-              <Card className="count">
+              <Card 
+              className="count"
+              data-aos='fade-down'
+              data-aos-offset='100'
+              data-aos-duration="250"
+              >
                 <Container>
                   <p>Since 2010, our customers have avoided</p>
                   <Counter end="1000" duration="0.01" />
                   <h4>pounds of CO2.</h4>
                 </Container>
               </Card>
-              <Card className="learn">
+              <Card 
+              className="learn"
+              data-aos='fade-left'
+              data-aos-offset='100'
+              >
                 <Container>
                   <h4>Let's utilize sun, wind and water in a better way</h4>
                   <p>
@@ -82,7 +110,10 @@ function App() {
               </Card>
             </CardContainer>
           <FlexBox className="about">
-            <Box>
+            <Box
+            data-aos='fade-right'
+            data-aos-offset='100'
+            >
               <Header className="about">About Us</Header>
               <SubHeader className="about">Renewable Energy for a Sustainable World</SubHeader>
               <span>
@@ -102,7 +133,11 @@ function App() {
                 </FlexBox>
               </Card>
             </Box>
-            <Box>
+            <Box
+            data-aos='fade-down'
+            data-aos-offset='100'
+            data-aos-delay="50"
+            >
               <Image src={EnergyImg} alt="energy" />
             </Box>
           </FlexBox>
@@ -112,6 +147,17 @@ function App() {
   );
 }
 
+AOS.init({
+  once: false,
+  offset: 100,
+  easing: 'ease-in-out',
+  delay: 50,
+  duration: 1500
+  // disable: () => {
+  //   const maxWidth = 900
+  //   return window.innerWidth < maxWidth
+  // }
+});
 export default App;
 
 /** STYLES */
@@ -238,7 +284,7 @@ ${Screen.iPadMini`
 `}
 ${Screen.iPhone14ProMax`
   font-size: 38px;
-  margin-top: 0;
+  margin-top: 20px;
 `}
 ${Screen.samsungGalaxyS8`
   margin-top: 10px;
