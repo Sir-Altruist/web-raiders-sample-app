@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
       {/** Scroll to top */}
       window.scrollTo(0, 0);
-      
+
       setLoading(true)
       const timer = setTimeout(() => setLoading(false), 3000)
     return () => clearTimeout(timer)
@@ -30,7 +30,7 @@ function App() {
     type === 'menu' ? setOpen(!open) : setOpenMenu(openMenu === name ? null : name)
   }
   // Disable click function
-  const disableClick = () => false;
+  // const disableClick = () => false;
 
 
   if(loading) return <Spinner />;
@@ -38,7 +38,7 @@ function App() {
     <AppContainer>
       {/** Landing */}
       <NavigationBar open={open} openMenu={openMenu} handleToggle={handleToggle} />
-      <Carousel
+      {!!sliders.length && <Carousel
       width={'100%'}
       animationHandler='fade'
       infiniteLoop={true}
@@ -46,8 +46,8 @@ function App() {
       showIndicators={false}
       showStatus={false}
       showThumbs={false}
-      onClickItem={disableClick} 
-      onClickThumb={disableClick}
+      // onClickItem={disableClick} 
+      // onClickThumb={disableClick}
       
       >
         {sliders.map((item, i) => (
@@ -79,7 +79,7 @@ function App() {
         </Section>
 
         ))}
-      </Carousel>
+      </Carousel>}
 
       {/** About Us */}
       <Section className="about">
