@@ -10,18 +10,20 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import Screen from "./screens";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Spinner from "./spinner";
 
 const sliders = [Slide1, Slide2, Slide3, Slide4]
 function App() {
+  const [loading, setLoading] = useState(false)
 
-  // const [mobile, setMobile] = useState(false)
-
-  {/** Check screen sizes */}
-  // useEffect(() => {
-  //   const responsive = () => {
-  //     return window.innerWidth
-  //   }
-  // }, [])
+  useEffect(() => {
+      {/** Scroll to top */}
+      window.scrollTo(0, 0);
+      
+      setLoading(true)
+      const timer = setTimeout(() => setLoading(false), 3000)
+    return () => clearTimeout(timer)
+  }, [])
   const [open, setOpen] = useState(false)
   const [openMenu, setOpenMenu] = useState(null)
   function handleToggle(type, name){
@@ -29,6 +31,9 @@ function App() {
   }
   // Disable click function
   const disableClick = () => false;
+
+
+  if(loading) return <Spinner />;
   return (
     <AppContainer>
       {/** Landing */}
