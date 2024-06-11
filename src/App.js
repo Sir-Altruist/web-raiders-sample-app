@@ -28,7 +28,7 @@ function App() {
     type === 'menu' ? setOpen(!open) : setOpenMenu(openMenu === name ? null : name)
   }
   // Disable click function
-  const disableClick = () => {};
+  const disableClick = () => false;
   return (
     <AppContainer>
       {/** Landing */}
@@ -66,8 +66,8 @@ function App() {
               data-aos='fade-up'
               data-aos-offset='100'
               >
-                <Button background="#0FCC7C" border="#0FCC7C">Get a Quote</Button>
-                <Button background="transparent" border="#fff" left="20px">Discover More</Button>
+                <Button background="#0FCC7C" border="#0FCC7C" className="quick">Get a Quote</Button>
+                <Button background="transparent" border="#fff" left="20px" className="discover">Discover More</Button>
               </ButtonWrapper>
             </Content>
           </Container>
@@ -332,6 +332,21 @@ border-radius: 30px;
 cursor: pointer!important;
 font-weight: 600;
 
+&.quick {
+&:hover {
+background-color: #00384F;
+transition: all .1s ease-out; 
+}
+}
+
+&.discover {
+&:hover {
+border: 1px solid #0FCC7C;
+color: #0FCC7C;
+transition: all .1s ease-out; 
+}
+}
+
 ${Screen.iPhone14ProMax`
   width: 100%;
   margin-left: 0;
@@ -360,7 +375,6 @@ display: flex;
 justify-content: center;
 align-items: center;
 margin-top: 30px;
-cursor: pointer!important;
 ${Screen.iPhone14ProMax`
   flex-direction: column;
 `}
